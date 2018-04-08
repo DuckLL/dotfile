@@ -14,7 +14,6 @@ brew  install  neovim/neovim/neovim
 brew  install  node
 brew  install  p7zip
 brew  install  python
-brew  install  python3
 brew  install  reattach-to-user-namespace
 brew  install  rmtrash
 brew  install  tmux
