@@ -52,7 +52,7 @@ ENABLE_CORRECTION="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(tmux git node aws docker zsh-autosuggestions zsh-syntax-highlighting)
+plugins=(autojump tmux git docker zsh-completions zsh-autosuggestions zsh-syntax-highlighting)
 autoload -U compinit && compinit
 
 # User configuration
@@ -88,27 +88,27 @@ export LANG=en_US.UTF-8
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-#gem
-for dir in $HOME/.gem/ruby/*; do
- [ -d "$dir/bin" ] && PATH="${dir}/bin:${PATH}"
-done
+# ruby
+# for dir in $HOME/.gem/ruby/*; do
+#     [ -d "$dir/bin" ] && PATH="${dir}/bin:${PATH}"
+# done
 
-#pip
+# pip
 export PYTHONUSERBASE=~/.pip
 PATH="$PYTHONUSERBASE/bin:${PATH}"
 
 # Android
-export PATH="/Users/duckll/Library/Android/sdk/platform-tools:${PATH}"
-export PATH="/Users/duckll/Library/Android/sdk/tools:${PATH}"
-export PATH="/Users/duckll/Library/Android/sdk/ndk-bundle:${PATH}"
-export ANDROID_HOME=/Users/duckll/Library/Android/sdk
+export PATH="$HOME/Library/Android/sdk/platform-tools:${PATH}"
+export PATH="$HOME/Library/Android/sdk/tools:${PATH}"
+export PATH="$HOME/Library/Android/sdk/ndk-bundle:${PATH}"
+export ANDROID_HOME=$HOME/Library/Android/sdk
 
 
-#prompt
+# prompt
 export PROMPT=%{$fg[blue]%}%~%{$reset_color%}$
 
-#alias
-#system
+# alias
+# system
 alias cp="cp -i"
 alias grep="grep --color=auto"
 alias ls="ls -HGF"
@@ -124,21 +124,29 @@ alias tmuxrc="nvim ~/.tmux.conf"
 function mkcd { mkdir -p "$@" && cd "$@";  }
 function push { git a . && git cm "$@" && git push }
 
-#ssh
-alias ptt="ssh bbsu@ptt.cc"
+# python
+alias python="python3"
+alias py3="python3"
+alias pip="pip3"
+alias pip_upgrade="pip freeze --local | grep -v '^\-e' | cut -d = -f 1  | xargs -n1 pip install -U"
 
-#cd
-alias cc="cd ~/Google\ Drive/NTHU/10601"
+# cd
+alias cc="cd ~/Google\ Drive/NTHU/10602"
 alias rr="cd /Volumes/RamDisk/"
 alias site="cd ~/Sites"
+alias eof="cd ~/Google\ Drive/CTF_backup/2018/EOF"
+alias final="cd ~/Google\ Drive/CTF_backup/2018/EOF_final"
+alias pp="cd ~/Google\ Drive/NTHU/thesis"
 
-#application
-alias cask="brew cask"
-
-#docker
-alias dk="docker"
+# docker
 alias ctf="docker start ctf && docker exec -it ctf script /dev/null -c 'tmux'"
+alias duck="docker exec -it ducker script /dev/null -c 'tmux'"
 function dkrm { docker kill "$@" && docker rm "$@" }
 
-##apple
+# apple
+alias cask="brew cask"
 alias launch="defaults write com.apple.dock ResetLaunchPad -bool true; killall Dock"
+alias update="brew upgrade && cask upgrade && launch"
+
+# ssh
+alias ptt="ssh bbsu@ptt.cc"

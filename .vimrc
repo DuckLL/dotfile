@@ -40,7 +40,7 @@ Plug 'junegunn/vim-easy-align'
 Plug 'tpope/vim-surround'
 Plug 'scrooloose/nerdcommenter'
 let g:NERDSpaceDelims = 1
-Plug 'michaeljsmith/vim-indent-object'
+Plug 'michaeljsmith/vim-indent-object' "vii
 Plug 'ervandew/supertab'
 let SuperTabMappingForward="<S-Tab>"
 Plug 'easymotion/vim-easymotion'
@@ -54,6 +54,7 @@ Plug 'plasticboy/vim-markdown',{'for': ['markdown']}
 Plug 'hdima/python-syntax',{'for': ['python']}
 let python_highlight_all = 1
 Plug 'zchee/deoplete-jedi',{'for': ['python']}
+let g:jedi#force_py_version=3
 
 call plug#end()
 
@@ -77,7 +78,7 @@ nmap <C-t>   :TagbarToggle<CR><C-w>l
 nmap <C-y>   :set    paste!<CR>
 nmap <C-5>   :set    fileencoding=big5<CR>
 nmap <C-8>   :set    fileencoding=utf8<CR>
-nmap <Bs>    za
+nmap <Enter> za
 vmap <Enter> <Plug>(EasyAlign)
 
 " Evil shift!

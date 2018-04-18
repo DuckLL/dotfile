@@ -27,4 +27,4 @@ curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs https://raw.githubuserc
 nvim +PlugInstall +q +UpdateRemotePlugins +q
 
 # set tmux
-git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm --depth 1

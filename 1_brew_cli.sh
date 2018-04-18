@@ -4,6 +4,7 @@ brew update
 
 brew  install  ag
 brew  install  apktool
+brew  install  autojump
 brew  install  ctags
 brew  install  dex2jar
 brew  install  ffmpeg

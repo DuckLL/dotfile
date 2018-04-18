@@ -125,6 +125,5 @@ function rm { mv "$@" ~/.trash; }
 function mkcd { mkdir -p "$@" && cd "$@";  }
 
 alias vim="nvim"
-alias dk="docker"
 alias py2="python2"
 alias py3="python3"

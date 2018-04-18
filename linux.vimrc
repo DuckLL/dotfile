@@ -19,8 +19,6 @@ if has("persistent_undo")
     set undodir=~/.undodir/
     set undofile
 endif
-Plug 'w0rp/ale'
-set statusline+=%{ALEGetStatusLine()}
 
 " Autocomplete
 Plug 'SirVer/ultisnips'
@@ -33,7 +31,6 @@ let g:deoplete#enable_at_startup = 1
 Plug 'vim-scripts/auto-pairs'
 Plug 'scrooloose/nerdcommenter'
 let g:NERDSpaceDelims = 1
-Plug 'michaeljsmith/vim-indent-object'
 Plug 'ervandew/supertab'
 let SuperTabMappingForward="<S-Tab>"
 Plug 'easymotion/vim-easymotion'
