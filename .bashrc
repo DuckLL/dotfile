@@ -118,7 +118,6 @@ fi
 
 alias cp="cp -i"
 alias grep="grep --color=auto"
-alias ls="ls -HGF"
 alias less="less -R"
 alias mv="mv -i"
 function rm { mv "$@" ~/.trash; }
