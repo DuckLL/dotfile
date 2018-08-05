@@ -93,16 +93,25 @@ export LANG=en_US.UTF-8
 #     [ -d "$dir/bin" ] && PATH="${dir}/bin:${PATH}"
 # done
 
-# pip
-export PYTHONUSERBASE=~/.pip
-PATH="$PYTHONUSERBASE/bin:${PATH}"
-
 # Android
 export PATH="$HOME/Library/Android/sdk/platform-tools:${PATH}"
 export PATH="$HOME/Library/Android/sdk/tools:${PATH}"
 export PATH="$HOME/Library/Android/sdk/ndk-bundle:${PATH}"
 export ANDROID_HOME=$HOME/Library/Android/sdk
 
+# python
+alias py2="/usr/bin/python"
+alias py3="python3"
+alias pip="pip3"
+alias pup="pip freeze --local | grep -v '^\-e' | cut -d = -f 1  | xargs -n1 pip install -U"
+export PYTHONUSERBASE=~/.pip
+PATH="$PYTHONUSERBASE/bin:${PATH}"
+
+# go
+export GOPATH=$HOME/golang
+export GOROOT=/usr/local/opt/go/libexec
+export PATH=$PATH:$GOPATH/bin
+export PATH=$PATH:$GOROOT/bin
 
 # prompt
 export PROMPT=%{$fg[blue]%}%~%{$reset_color%}$
@@ -123,12 +132,6 @@ alias zshrc="nvim ~/.zshrc"
 alias tmuxrc="nvim ~/.tmux.conf"
 function mkcd { mkdir -p "$@" && cd "$@";  }
 function push { git a . && git cm "$@" && git push }
-
-# python
-alias python="python3"
-alias py3="python3"
-alias pip="pip3"
-alias pip_upgrade="pip freeze --local | grep -v '^\-e' | cut -d = -f 1  | xargs -n1 pip install -U"
 
 # cd
 alias cc="cd ~/Google\ Drive/NTHU/10602"

@@ -11,7 +11,7 @@ brew  install  ffmpeg
 brew  install  git
 brew  install  httrack
 brew  install  mycli
-brew  install  neovim/neovim/neovim
+brew  install  neovim
 brew  install  node
 brew  install  p7zip
 brew  install  python
@@ -20,9 +20,6 @@ brew  install  rmtrash
 brew  install  tmux
 brew  install  yarn
 brew  install  zsh
-
-brew tap homebrew/php
-brew install psysh
 
 brew cleanup --force
 brew prune
