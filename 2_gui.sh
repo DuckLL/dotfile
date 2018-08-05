@@ -12,6 +12,7 @@ brew  cask  install  google-backup-and-sync
 brew  cask  install  airdroid
 brew  cask  install  android-file-transfer
 brew  cask  install  appcleaner
+brew  cask  install  betterzip
 brew  cask  install  daisydisk
 brew  cask  install  docker
 brew  cask  install  enjoyable
