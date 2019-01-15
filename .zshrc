@@ -52,7 +52,7 @@ ENABLE_CORRECTION="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(autojump tmux git docker zsh-completions zsh-autosuggestions zsh-syntax-highlighting)
+plugins=(docker git tmux z zsh-completions zsh-autosuggestions zsh-syntax-highlighting)
 autoload -U compinit && compinit
 
 # User configuration
@@ -134,12 +134,8 @@ function mkcd { mkdir -p "$@" && cd "$@";  }
 function push { git a . && git cm "$@" && git push }
 
 # cd
-alias cc="cd ~/Google\ Drive/NTHU/10602"
 alias rr="cd /Volumes/RamDisk/"
 alias site="cd ~/Sites"
-alias eof="cd ~/Google\ Drive/CTF_backup/2018/EOF"
-alias final="cd ~/Google\ Drive/CTF_backup/2018/EOF_final"
-alias pp="cd ~/Google\ Drive/NTHU/thesis"
 
 # docker
 alias ctf="docker start ctf && docker exec -it ctf script /dev/null -c 'tmux'"

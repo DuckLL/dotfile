@@ -26,6 +26,8 @@ brew  cask  install  macdown
 brew  cask  install  messenger
 brew  cask  install  microsoft-office
 brew  cask  install  obs
+brew  cask  install  qlcolorcode
+brew  cask  install  qlmarkdown
 brew  cask  install  remote-play
 brew  cask  install  ripple-wallet
 brew  cask  install  skype
@@ -36,6 +38,7 @@ brew  cask  install  steam
 brew  cask  install  teamviewer
 brew  cask  install  telegram
 brew  cask  install  torbrowser
+brew  cask  install  tunnelblick
 brew  cask  install  visual-studio-code
 brew  cask  install  vlc
 brew  cask  install  vmware-fusion
@@ -46,8 +49,6 @@ brew  cask  install  jdownloader
 brew  cask  install  java
 brew  cask  install  burp-suite
 brew  cask  install  jd-gui
-# manual install
-brew  cask  install  battle-net
 
 brew cask cleanup
 brew cask doctor
