@@ -2,6 +2,7 @@
 
 # set dotfile
 cp .bashrc ~/
+mkdir -p ~/.trash
 cp linux.vimrc ~/.vimrc
 mkdir -p ~/.config/nvim
 ln ~/.vimrc ~/.config/nvim/init.vim
