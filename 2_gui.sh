@@ -47,7 +47,6 @@ brew  cask  install  wireshark
 # java
 brew  cask  install  jdownloader
 brew  cask  install  java
-brew  cask  install  burp-suite
 brew  cask  install  jd-gui
 
 brew cask cleanup

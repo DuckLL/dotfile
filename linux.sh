@@ -13,6 +13,6 @@ cp .gitignore_global ~/
 
 # set vim
 pip3 install pip -U
-pip3 install neovim --user
+pip3 install pynvim --user
 curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 nvim +PlugInstall +q +UpdateRemotePlugins +q
