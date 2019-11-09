@@ -9,6 +9,7 @@ brew  install  dex2jar
 brew  install  ffmpeg
 brew  install  git
 brew  install  httrack
+brew  install  hugo
 brew  install  mas
 brew  install  mycli
 brew  install  neovim
@@ -17,6 +18,7 @@ brew  install  p7zip
 brew  install  python
 brew  install  reattach-to-user-namespace
 brew  install  rmtrash
+brew  install  scrcpy
 brew  install  tmux
 brew  install  yarn
 brew  install  zsh

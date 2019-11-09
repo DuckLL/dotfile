@@ -19,7 +19,7 @@
 	p = pull
 	s = status
 [core]
-    editor = vim
+    editor = code
 	excludesfile = ~/.gitignore_global
 [push]
 	default = simple
