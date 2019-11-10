@@ -138,8 +138,7 @@ alias rr="cd /Volumes/RamDisk/"
 alias site="cd ~/Sites"
 
 # docker
-alias ctf="docker start ctf && docker exec -it ctf script /dev/null -c 'tmux'"
-alias duck="docker exec -it ducker script /dev/null -c 'tmux'"
+alias ctf="docker start ctf && docker exec -it ctf tmux"
 function dkrm { docker kill "$@" && docker rm "$@" }
 
 # apple
