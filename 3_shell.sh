@@ -3,16 +3,13 @@
 # change default shell
 chsh -s /usr/local/bin/zsh
 
-# install oh-my-zsh
-curl -L https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh | sh
-
-# zsh plugins
-git clone https://github.com/zsh-users/zsh-completions ~/.oh-my-zsh/custom/plugins/zsh-completions --depth 1
-git clone git://github.com/zsh-users/zsh-autosuggestions ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions --depth 1
-git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting --depth 1
+# install zimfw
+curl -fsSL https://raw.githubusercontent.com/zimfw/install/master/install.zsh | zsh
 
 # set dotfile
 cp .zshrc ~/
+cp .zimrc ~/
+cp .p10k.zsh ~/
 cp .vimrc ~/
 mkdir -p ~/.config/nvim
 ln ~/.vimrc ~/.config/nvim/init.vim
@@ -20,6 +17,9 @@ cp .tmux.conf ~/
 cp .gemrc ~/
 cp .gitconfig ~/
 cp .gitignore_global ~/
+
+# set zimfw
+zimfw install
 
 # set vim
 pip3 install neovim
