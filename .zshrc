@@ -126,7 +126,6 @@ bindkey -M vicmd 'j' history-substring-search-down
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 # Basic ENV
-
 export PATH="/usr/local/sbin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$HOME/bin"
 export MANPATH="/usr/local/man:$MANPATH"
 export LC_ALL=en_US.UTF-8
@@ -139,9 +138,9 @@ export PATH="$HOME/Library/Android/sdk/ndk-bundle:${PATH}"
 export ANDROID_HOME=$HOME/Library/Android/sdk
 
 # Python
-alias py2="/usr/bin/python"
-alias py3="python3"
+alias python="python3"
 alias pip="pip3"
+alias py2="/usr/bin/python"
 alias pup="pip freeze --local | grep -v '^\-e' | cut -d = -f 1  | xargs -n1 pip install -U"
 export PYTHONUSERBASE=~/.pip
 PATH="$PYTHONUSERBASE/bin:${PATH}"
@@ -159,7 +158,6 @@ alias grep="grep --color=auto"
 alias ls="ls -HGF"
 alias less="less -R"
 alias mv="mv -i"
-alias myip="curl ipinfo.io"
 alias rm="rmtrash"
 alias tmuxrc="nvim ~/.tmux.conf"
 alias vim="nvim"
@@ -169,18 +167,19 @@ alias tmuxrc="nvim ~/.tmux.conf"
 function mkcd { mkdir -p "$@" && cd "$@";  }
 function push { git a . && git cm "$@" && git push }
 
-# Cd
+# Folder
 alias rr="cd /Volumes/RamDisk/"
 alias site="cd ~/Sites"
 
-# docker
+# Docker
 alias ctf="docker start ctf && docker exec -it ctf tmux"
 function dkrm { docker kill "$@" && docker rm "$@" }
 
 # Apple
 alias cask="brew cask"
 alias launch="defaults write com.apple.dock ResetLaunchPad -bool true; killall Dock"
-alias update="brew upgrade && cask upgrade && launch"
+alias update="brew upgrade ; cask upgrade ; pup ; yarn global upgrade ; launch"
 
-# Ssh
-alias ptt="ssh bbsu@ptt.cc"
+# Snippet
+alias c="code ."
+alias myip="curl ipinfo.io"
