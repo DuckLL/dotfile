@@ -1,149 +1,87 @@
-# Start configuration added by Zim install {{{
-#
-# User configuration sourced by interactive shells
-#
-
-# -----------------
-# Zsh configuration
-# -----------------
-
-#
-# History
-#
-
-# Remove older command from the history if a duplicate is to be added.
-setopt HIST_IGNORE_ALL_DUPS
-
-#
-# Input/output
-#
-
-# Set editor default keymap to emacs (`-e`) or vi (`-v`)
-bindkey -v
-
-# Prompt for spelling correction of commands.
-#setopt CORRECT
-
-# Customize spelling correction prompt.
-#SPROMPT='zsh: correct %F{red}%R%f to %F{green}%r%f [nyae]? '
-
-# Remove path separator from WORDCHARS.
-WORDCHARS=${WORDCHARS//[\/]}
-
-
-# --------------------
-# Module configuration
-# --------------------
-
-#
-# completion
-#
-
-# Set a custom path for the completion dump file.
-# If none is provided, the default ${ZDOTDIR:-${HOME}}/.zcompdump is used.
-#zstyle ':zim:completion' dumpfile "${ZDOTDIR:-${HOME}}/.zcompdump-${ZSH_VERSION}"
-
-#
-# git
-#
-
-# Set a custom prefix for the generated aliases. The default prefix is 'G'.
-#zstyle ':zim:git' aliases-prefix 'g'
-
-#
-# input
-#
-
-# Append `../` to your input for each `.` you type after an initial `..`
-#zstyle ':zim:input' double-dot-expand yes
-
-#
-# termtitle
-#
-
-# Set a custom terminal title format using prompt expansion escape sequences.
-# See http://zsh.sourceforge.net/Doc/Release/Prompt-Expansion.html#Simple-Prompt-Escapes
-# If none is provided, the default '%n@%m: %~' is used.
-#zstyle ':zim:termtitle' format '%1~'
-
-#
-# zsh-autosuggestions
-#
-
-# Customize the style that the suggestions are shown with.
-# See https://github.com/zsh-users/zsh-autosuggestions/blob/master/README.md#suggestion-highlight-style
-#ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=10'
-
-#
-# zsh-syntax-highlighting
-#
-
-# Set what highlighters will be used.
-# See https://github.com/zsh-users/zsh-syntax-highlighting/blob/master/docs/highlighters.md
-ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets)
-
-# Customize the main highlighter styles.
-# See https://github.com/zsh-users/zsh-syntax-highlighting/blob/master/docs/highlighters/main.md#how-to-tweak-it
-#typeset -A ZSH_HIGHLIGHT_STYLES
-#ZSH_HIGHLIGHT_STYLES[comment]='fg=10'
-
-# ------------------
-# Initialize modules
-# ------------------
-
-if [[ ${ZIM_HOME}/init.zsh -ot ${ZDOTDIR:-${HOME}}/.zimrc ]]; then
-  # Update static initialization script if it's outdated, before sourcing it
-  source ${ZIM_HOME}/zimfw.zsh init -q
-fi
-source ${ZIM_HOME}/init.zsh
-
-# ------------------------------
-# Post-init module configuration
-# ------------------------------
-
-#
-# zsh-history-substring-search
-#
-
-# Bind ^[[A/^[[B manually so up/down works both before and after zle-line-init
-bindkey '^[[A' history-substring-search-up
-bindkey '^[[B' history-substring-search-down
-
-# Bind up and down keys
-zmodload -F zsh/terminfo +p:terminfo
-if [[ -n ${terminfo[kcuu1]} && -n ${terminfo[kcud1]} ]]; then
-  bindkey ${terminfo[kcuu1]} history-substring-search-up
-  bindkey ${terminfo[kcud1]} history-substring-search-down
+### Added by Zinit's installer
+if [[ ! -f $HOME/.zinit/bin/zinit.zsh ]]; then
+    print -P "%F{33}▓▒░ %F{220}Installing %F{33}DHARMA%F{220} Initiative Plugin Manager (%F{33}zdharma/zinit%F{220})…%f"
+    command mkdir -p "$HOME/.zinit" && command chmod g-rwX "$HOME/.zinit"
+    command git clone https://github.com/zdharma/zinit "$HOME/.zinit/bin" && \
+        print -P "%F{33}▓▒░ %F{34}Installation successful.%f%b" || \
+        print -P "%F{160}▓▒░ The clone has failed.%f%b"
 fi
 
-bindkey '^P' history-substring-search-up
-bindkey '^N' history-substring-search-down
-bindkey -M vicmd 'k' history-substring-search-up
-bindkey -M vicmd 'j' history-substring-search-down
-# }}} End configuration added by Zim install
+source "$HOME/.zinit/bin/zinit.zsh"
+autoload -Uz _zinit
+(( ${+_comps} )) && _comps[zinit]=_zinit
 
+# Load a few important annexes, without Turbo
+# (this is currently required for annexes)
+zinit light-mode for \
+    zinit-zsh/z-a-as-monitor \
+    zinit-zsh/z-a-patch-dl \
+    zinit-zsh/z-a-bin-gem-node
+
+### End of Zinit's installer chunk
+
+#################################################################
+# FUNCTIONS TO MAKE CONFIGURATION LESS VERBOSE
+#
+
+turbo0()   { zinit ice wait"0a" lucid             "${@}"; }
+turbo1()   { zinit ice wait"0b" lucid             "${@}"; }
+turbo2()   { zinit ice wait"0c" lucid             "${@}"; }
+zload()    { zinit light                          "${@}"; }
+
+#################################################################
+
+
+# Theme
+zinit ice depth=1
+zload romkatv/powerlevel10k
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+# Folder
+turbo1; zload rupa/z
+turbo0; zload andrewferrier/fzf-z
+turbo0; zload changyuheng/fz
+
+# Completions
+turbo0 blockf
+zload zsh-users/zsh-completions
+zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
+
+turbo0 atload"_zsh_autosuggest_start"
+zload zsh-users/zsh-autosuggestions
+
+turbo2 atinit"ZINIT[COMPINIT_OPTS]='-i' zpcompinit; zpcdreplay"
+zload zdharma/fast-syntax-highlighting
+
+# Ctrl+r
+turbo1; zload zdharma/history-search-multi-word
+
+
+# History config
+HISTSIZE=10000
+SAVEHIST=10000
+HISTFILE=~/.zsh_history
 
 # Basic ENV
 export PATH="/usr/local/sbin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$HOME/bin"
 export MANPATH="/usr/local/man:$MANPATH"
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
+export CLICOLOR="true"
 
 # Android
-export PATH="$HOME/Library/Android/sdk/platform-tools:${PATH}"
-export PATH="$HOME/Library/Android/sdk/tools:${PATH}"
-export PATH="$HOME/Library/Android/sdk/ndk-bundle:${PATH}"
-export ANDROID_HOME=$HOME/Library/Android/sdk
+# export PATH="$HOME/Library/Android/sdk/platform-tools:${PATH}"
+# export PATH="$HOME/Library/Android/sdk/tools:${PATH}"
+# export PATH="$HOME/Library/Android/sdk/ndk-bundle:${PATH}"
+# export ANDROID_HOME=$HOME/Library/Android/sdk
 
 # Python
-alias python="python3"
+alias py3="python3"
 alias pip="pip3"
-alias py2="/usr/bin/python"
-alias pup="pip freeze --local | grep -v '^\-e' | cut -d = -f 1  | xargs -n1 pip install -U"
+alias pup="pip3 freeze --local | grep -v '^\-e' | cut -d = -f 1  | xargs -n1 pip3 install -U"
 export PYTHONUSERBASE=~/.pip
-PATH="$PYTHONUSERBASE/bin:${PATH}"
+export PATH="$PYTHONUSERBASE/bin:${PATH}"
 
 # Go
 export GOPATH=$HOME/golang
@@ -154,10 +92,9 @@ export PATH=$PATH:$GOROOT/bin
 # Alias
 # System
 alias cp="cp -i"
-alias grep="grep --color=auto"
-alias ls="ls -HGF"
-alias less="less -R"
 alias mv="mv -i"
+alias grep="grep --color=auto"
+alias less="less -R"
 alias rm="rmtrash"
 alias tmuxrc="nvim ~/.tmux.conf"
 alias vim="nvim"
