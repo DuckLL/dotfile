@@ -38,6 +38,8 @@ zload romkatv/powerlevel10k
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
+eval $(gdircolors -b $HOME/.dircolors)
+
 # Folder
 turbo1; zload rupa/z
 turbo0; zload andrewferrier/fzf-z
@@ -68,7 +70,7 @@ export PATH="/usr/local/sbin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$HOME/
 export MANPATH="/usr/local/man:$MANPATH"
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
-export CLICOLOR="true"
+export CLICOLOR=1
 
 # Android
 # export PATH="$HOME/Library/Android/sdk/platform-tools:${PATH}"
@@ -92,6 +94,7 @@ export PATH=$PATH:$GOROOT/bin
 # Alias
 # System
 alias cp="cp -i"
+alias ls="gls -F --color=auto"
 alias mv="mv -i"
 alias grep="grep --color=auto"
 alias less="less -R"
