@@ -38,11 +38,18 @@ zload romkatv/powerlevel10k
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
+# syntax highlight
+turbo2 atinit"ZINIT[COMPINIT_OPTS]='-i' zpcompinit; zpcdreplay"
+zload zdharma/fast-syntax-highlighting
+
+# lscolor
 eval $(gdircolors -b $HOME/.dircolors)
 
-# Folder
+# z
 turbo1; zload rupa/z
+# Ctrl+G
 turbo0; zload andrewferrier/fzf-z
+# zz
 turbo0; zload changyuheng/fz
 
 # Completions
@@ -53,16 +60,19 @@ zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 
 turbo0 atload"_zsh_autosuggest_start"
 zload zsh-users/zsh-autosuggestions
 
-turbo2 atinit"ZINIT[COMPINIT_OPTS]='-i' zpcompinit; zpcdreplay"
-zload zdharma/fast-syntax-highlighting
+function __bind_history_keys() {
+  bindkey '^[[A' history-substring-search-up
+  bindkey '^[[B' history-substring-search-down
+}
+turbo0 atload'__bind_history_keys'
+zload zsh-users/zsh-history-substring-search
 
 # Ctrl+r
 turbo1; zload zdharma/history-search-multi-word
 
-
 # History config
-HISTSIZE=10000
-SAVEHIST=10000
+HISTSIZE=100000
+SAVEHIST=100000
 HISTFILE=~/.zsh_history
 
 # Basic ENV

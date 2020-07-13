@@ -3,9 +3,6 @@
 # change default shell
 chsh -s /usr/local/bin/zsh
 
-# install zimfw
-curl -fsSL https://raw.githubusercontent.com/zimfw/install/master/install.zsh | zsh
-
 # set dotfile
 cp .zshrc ~/
 cp .zimrc ~/
@@ -17,9 +14,6 @@ cp .tmux.conf ~/
 cp .gemrc ~/
 cp .gitconfig ~/
 cp .gitignore_global ~/
-
-# set zimfw
-zimfw install
 
 # set vim
 pip3 install neovim

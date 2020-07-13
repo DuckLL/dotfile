@@ -113,6 +113,7 @@ set smartindent                        " Autoindent
 set t_Co=256                           " Explicitly tell Vim that the terminal supports 256 colors
 set timeoutlen=300                     " escape delay
 set wildmenu                           " Autocomplete menu
+set termguicolors                      " True colors
 
 " Tab
 set expandtab
