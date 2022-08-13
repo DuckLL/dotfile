@@ -2,7 +2,7 @@
 if [[ ! -f $HOME/.zinit/bin/zinit.zsh ]]; then
     print -P "%F{33}▓▒░ %F{220}Installing %F{33}DHARMA%F{220} Initiative Plugin Manager (%F{33}zdharma/zinit%F{220})…%f"
     command mkdir -p "$HOME/.zinit" && command chmod g-rwX "$HOME/.zinit"
-    command git clone https://github.com/zdharma/zinit "$HOME/.zinit/bin" && \
+    command git clone https://github.com/zdharma-continuum/zinit "$HOME/.zinit/bin" && \
         print -P "%F{33}▓▒░ %F{34}Installation successful.%f%b" || \
         print -P "%F{160}▓▒░ The clone has failed.%f%b"
 fi
@@ -10,15 +10,6 @@ fi
 source "$HOME/.zinit/bin/zinit.zsh"
 autoload -Uz _zinit
 (( ${+_comps} )) && _comps[zinit]=_zinit
-
-# Load a few important annexes, without Turbo
-# (this is currently required for annexes)
-zinit light-mode for \
-    zinit-zsh/z-a-as-monitor \
-    zinit-zsh/z-a-patch-dl \
-    zinit-zsh/z-a-bin-gem-node
-
-### End of Zinit's installer chunk
 
 #################################################################
 # FUNCTIONS TO MAKE CONFIGURATION LESS VERBOSE
@@ -82,6 +73,14 @@ export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 export CLICOLOR=1
 
+# Homebrew
+export HOMEBREW_PREFIX="/opt/homebrew";
+export HOMEBREW_CELLAR="/opt/homebrew/Cellar";
+export HOMEBREW_REPOSITORY="/opt/homebrew";
+export PATH="/opt/homebrew/bin:/opt/homebrew/sbin${PATH+:$PATH}";
+export MANPATH="/opt/homebrew/share/man${MANPATH+:$MANPATH}:";
+export INFOPATH="/opt/homebrew/share/info:${INFOPATH:-}";
+
 # Android
 # export PATH="$HOME/Library/Android/sdk/platform-tools:${PATH}"
 # export PATH="$HOME/Library/Android/sdk/tools:${PATH}"
@@ -108,7 +107,7 @@ alias ls="gls -F --color=auto"
 alias mv="mv -i"
 alias grep="grep --color=auto"
 alias less="less -R"
-alias rm="rmtrash"
+alias rm="trash"
 alias tmuxrc="nvim ~/.tmux.conf"
 alias vim="nvim"
 alias vimrc="nvim ~/.vimrc"
